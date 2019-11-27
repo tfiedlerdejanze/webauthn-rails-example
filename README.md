@@ -17,7 +17,7 @@ We will not find clean nor DRY code in this repository :)
 * [Add and configure dependencies](#create-app)
 * [Add a User model](#user-model)
 * [Add a Registration controller](#registration-controller)
-* [Add a Registration form](#registration-form)
+* [Add a Registration view](#registration-view)
 * [Handle the form submission](#registration-submit)
 * [Configure routes and load assets](#routes-and-assets)
 
@@ -198,14 +198,14 @@ Edit [`app/javascript/packs/application.js`](https://github.com/ucwaldo/webauthn
 require('packs/registration');
 ```
 
-Now is definitely time to start the rails server and to hopefully see your form in action.
+Now is definitely the time to start the rails server and test out the form.
 
 ```
-rails s
+$ rails s
 ```
 
-Feel free to make some improvements where you feel is necessary or copy some details from the demo.
+Feel free to make some improvements where you feel it's necessary or copy some details from the demo. For example validate the incoming user input, return eventual errors and handle them on the client side.
 
-##### 7) Time to add the login form. [view commit](https://github.com/ucwaldo/webauthn-rails-example/commit/fcab32e6feeac2f01b7a9407e850b5e2fb78f635)
+##### 7) Adding the login form. [view commit](https://github.com/ucwaldo/webauthn-rails-example/commit/fcab32e6feeac2f01b7a9407e850b5e2fb78f635)
 
 The functionality and requirements of the login form are quite similar to the one we just added for the registration. The big difference now, is that instead of doing a **create** and verifying WebAuthn credentials in the browser and server side of our app, we now want to **get** and verify our previously created credentials from information that the user provides: first only the username, then the information that is stored on the authenticator.
