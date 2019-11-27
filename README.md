@@ -93,7 +93,6 @@ class RegistrationsController < ApplicationController
     render json: {message: "Registration success"}
   end
 end
-
 ```
 
 <a name="registration-view"></a>
