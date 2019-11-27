@@ -6,8 +6,10 @@ We will not find clean nor DRY code in this repository :)
 #### prerequisites
 
 * rails 5 or 6 installed
+* up to date chrome or firefox browser
 * basic knowledge of javascript
 * basic knowledge of ruby
+* authenticator (fido2 key or fingerprint scanner)
 
 ## Workshop Chapters
 
