@@ -112,7 +112,7 @@ Edit  `app/views/registrations/new.html.erb`. As we dont ask for much typed inpu
 ```
 
 <a name="registration-submit"></a>
-##### 5) Handle the form submit. [view commit](https://github.com/ucwaldo/webauthn-rails-example/commit/888f1755c687cc36cd7f2016e3adee1582ecf14d#diff-912bd5d5dfc6399d7f01f86777fae54c)
+##### 5) Handle the form submit. [view commit](https://github.com/ucwaldo/webauthn-rails-example/commit/888f1755c687cc36cd7f2016e3adee1582ecf14d#diff-412764e518970a051276c4f1a2355997)
 
 It's time to consume our previously created endpoints, so we'll create a file `app/javascripts/packs/registration.js` in which we'll handle the form submission.  We first need to request the credential options and challenge providing only a username and sign those with an [authenticatior](https://www.w3.org/TR/webauthn/#authenticator) connected via the `navigator` browser api. The result of this process is sent back to the registration endpoint, verified by the initial challenge and a user record gets created. In JavaScript words this is quite a lot, so we try to keep it minimal again and you can check out the commit above or view the [demo file](https://github.com/ucwaldo/webauthn-rails-example/blob/master/app/javascript/packs/registration.js). Now is also time to note that the npm package [@github/webauthn-json](https://github.com/github/webauthn-json) we use here, is a *WebAuthn API wrapper that translates to/from pure JSON using base64url* which essentially wraps the `navigator.credentials.{get, create}` api for us and saves us from manually encoding the credential parameters.
 
