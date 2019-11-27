@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   post '/login/prepare', to: 'logins#prepare'
   post '/login', to: 'logins#create'
+
+  root 'registrations#new'
 end

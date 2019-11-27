@@ -8,9 +8,9 @@ const LoginForm = form => {
   const infoContainer = document.getElementById("information");
 
   const login = async () => {
-    const username = document.getElementById("username-field").value;
+    const username = document.getElementById("username-field");
 
-    const preparePayload = { login: { username } };
+    const preparePayload = { login: { username: username.value } };
 
     const prepareRequest = await fetch("/login/prepare", {
       method: "POST",
@@ -20,8 +20,8 @@ const LoginForm = form => {
     });
 
     if (!prepareRequest.ok) {
-      const errors = await prepareRequest.json();
-      infoContainer.innerHTML = JSON.stringify(errors);
+      const result = await prepareRequest.json();
+      infoContainer.innerHTML = result.error;
       return;
     }
 
@@ -37,9 +37,12 @@ const LoginForm = form => {
     });
 
     if (loginRequest.ok) {
-      infoContainer.innerHTML = loginSuccessMsg + username;
+      const result = await loginRequest.json();
+      infoContainer.innerHTML = result.message;
+      username.value = "";
     } else {
-      infoContainer.innerHTML = loginErrorMsg;
+      const result = await loginRequest.json();
+      infoContainer.innerHTML = result.error;
     }
   };
 

@@ -1,5 +1,3 @@
-require("turbolinks").start();
-
 window.onload = function() {
   const regFormEl = document.getElementById("registration-form");
   const logFormEl = document.getElementById("login-form");

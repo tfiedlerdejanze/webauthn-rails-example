@@ -1,16 +1,13 @@
 import { create } from "@github/webauthn-json";
 
-const registrationSuccessMsg = "Thanks for registering, ";
-const registrationErrorMsg = "Oh no, something went terribly wrong.";
-
 const RegistrationForm = form => {
   const headers = getJsonHeaders();
   const infoContainer = document.getElementById("information");
 
   const register = async () => {
-    const username = document.getElementById("username-field").value;
+    const username = document.getElementById("username-field");
 
-    const preparePayload = { registration: { username } };
+    const preparePayload = { registration: { username: username.value } };
 
     const prepareRequest = await fetch("/register/prepare", {
       method: "POST",
@@ -20,8 +17,8 @@ const RegistrationForm = form => {
     });
 
     if (!prepareRequest.ok) {
-      const errors = await prepareRequest.json();
-      infoContainer.innerHTML = JSON.stringify(errors);
+      const result = await prepareRequest.json();
+      infoContainer.innerHTML = result.error;
       return;
     }
 
@@ -37,9 +34,12 @@ const RegistrationForm = form => {
     });
 
     if (registerRequest.ok) {
-      infoContainer.innerHTML = registrationSuccessMsg + username;
+      const result = await registerRequest.json();
+      infoContainer.innerHTML = result.message;
+      username.value = "";
     } else {
-      infoContainer.innerHTML = registrationErrorMsg;
+      const result = await registerRequest.json();
+      infoContainer.innerHTML = result.error;
     }
   };
 

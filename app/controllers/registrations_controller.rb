@@ -3,7 +3,7 @@ class RegistrationsController < ApplicationController
     user = User.new(registration_params)
 
     unless user.valid?
-      return render json: {errors: user.errors}, status: :bad_request
+      return render json: {error: "Username invalid"}, status: :bad_request
     end
 
     options = WebAuthn::Credential.options_for_create(
@@ -29,7 +29,9 @@ class RegistrationsController < ApplicationController
       sign_count: c.sign_count,
     })
 
-    User.create(create_params)
+    user = User.create(create_params)
+
+    render json: {message: "Welcome #{user.username}, your registration was successful!"}
   end
 
   def new
