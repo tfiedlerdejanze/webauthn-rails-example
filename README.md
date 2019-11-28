@@ -3,6 +3,8 @@
 This is a minimal example demoing the WebAuthn API with ruby-on-rails. While the client-side part takes minimal advantage of rails default webpack configuration, it is by intention not bound to any framework and tries to be easily understandable for everyone.
 We will not find clean nor DRY code in this repository :)
 
+[See the demo](https://webauthn-rails-example.herokuapp.com/)
+
 #### prerequisites
 
 * rails 5 or 6 installed
