@@ -13,6 +13,15 @@ We will not find clean nor DRY code in this repository :)
 * basic knowledge of ruby
 * authenticator (fido2 key or fingerprint scanner)
 
+## Run this app
+
+* bundle install
+* bundle exec rails db:create
+* bundle exec rails db:migrate
+* bundle exec rails webpacker:install
+* bundle exec rails s
+* visit http://localhost:3000
+
 ## Workshop Chapters
 
 * [Create a new rails application](#create-app)
